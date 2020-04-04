@@ -69,8 +69,8 @@ vagrant destroy
 ```
 ssh in to the VM
 ```
-vagrant ssh web1
-vagrant ssh web2
+vagrant ssh web01
+vagrant ssh web02
 vagrant ssh HAproxy
 ```
 
