@@ -19,45 +19,45 @@ Vagrant.configure('2') do |config|
         vb.cpus = 1
     end
 
-    config.vm.define "web01", primary: true do |machine|
-        machine.vm.host_name = "web01.local"
-        machine.vm.network "private_network", ip: "192.168.10.40"
-        config.vm.provision "shell", inline: $useraddscript
-        config.vm.provision :shell, path: "bootstrap.sh"
+    config.vm.define "web01", primary: true do |machine1|
+        machine1.vm.host_name = "web01.local"
+        machine1.vm.network "private_network", ip: "192.168.10.40"
+        machine1.vm.provision "shell", inline: $useraddscript
+        machine1.vm.provision :shell, path: "bootstrap.sh"
 
-        machine.vm.provider "virtualbox" do |vb|
+        machine1.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
 
-        machine.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
-        machine.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
+        machine1.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
+        machine1.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
     end
 
-    config.vm.define "web02", primary: false do |machine|
-        machine.vm.host_name = "web02.local"
-        machine.vm.network "private_network", ip: "192.168.10.50"
-        config.vm.provision "shell", inline: $useraddscript
-        config.vm.provision :shell, path: "bootstrap.sh"
+    config.vm.define "web02", primary: false do |machine2|
+        machine2.vm.host_name = "web02.local"
+        machine2.vm.network "private_network", ip: "192.168.10.50"
+        machine2.vm.provision "shell", inline: $useraddscript
+        machine2.vm.provision :shell, path: "bootstrap.sh"
 
-        machine.vm.provider "virtualbox" do |vb|
+        machine2.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
         
-        machine.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
-        machine.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
+        machine2.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
+        machine2.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
     end
 
-    config.vm.define "HAproxy", primary: false do |machine|
-        machine.vm.host_name = "HAproxy.local"
-        machine.vm.network "private_network", ip: "192.168.10.60"
-        config.vm.provision "shell", inline: $useraddscript
+    config.vm.define "HAproxy", primary: false do |machine3|
+        machine3.vm.host_name = "HAproxy.local"
+        machine3.vm.network "private_network", ip: "192.168.10.60"
+        machine3.vm.provision "shell", inline: $useraddscript
 
-        machine.vm.provider "virtualbox" do |vb|
+        machine3.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
         
-        machine.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
-        machine.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
+        machine3.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
+        machine3.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
     end
 
 end
