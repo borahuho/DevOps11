@@ -6,12 +6,54 @@ HAproxy
 
 ######################################
 
+1. Stop and disable apache service on HAproxy 
+
+2. Open webbrowser and go to 192.168.10.40 and 192.168.10.50 (You must see the same webpage)
+
+3. Install haproxy on the HAproxy server.
+
+4. Check the version of haproxy
+
+5. Make a copy of the default haproxy file.
+
+6. Start and enable the service haproxy.
+
+7. Go to the /etc/rsyslog.conf and uncomment the below parameters.
+7.1 $ModLoad imudp
+7.2 $UDPServerRun 514
+7.3 $UDPServerAddress 127.0.0.1
+7.4 $ModLoad imtcp
+7.5 $InputTCPServerRun 514
+
+8. Restart the service and create a haproxy.log file in /var/log/
+8.1 you have to set an SELinux boolean and if you don’t want it, you can disable SELinux. 
+8.1.1 setsebool -P haproxy_connect_any 1
+8.1.2 systemctl restart haproxy
+
+9. Check the status again, the error won’t be showing.
+
+10. Now you must create a separate file for haproxy web server. 
+10.1  vim ha_web.cfg
+
+11. Verify the configuration settings before restarting the haproxy service.
+11.1 haproxy -c -f /etc/haproxy/haproxy.cfg
+
+12. Now configure the haproxy for a webserver.
+12.1 vim haproxy.cfg
+
+13. We will hit the load balancer IP and it should go to the webserver 1 and 2 to the server the website with load balancing using round-robin. 
+13.1 curl 192.168.10.60
+13.2 curl 192.168.10.60
+
+Output should be the same. Make changes to the index.html on web01 and web02. 
+
+Do step 13 again, the output should be different.
+
+When all steps are done, this HAproxy server is ready for deployment. 
 
 
 ######################################
 
-Write down all used commands in your own home directory
-
-
+write a configuration manual for HAproxy server.
 
 
