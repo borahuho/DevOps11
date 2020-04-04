@@ -23,7 +23,6 @@ Vagrant.configure('2') do |config|
         machine1.vm.network "private_network", ip: "192.168.10.40"
         machine1.vm.provision "shell", inline: $useraddscript
         machine1.vm.provision :shell, path: "bootstrap.sh"
-
         machine1.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
@@ -34,7 +33,6 @@ Vagrant.configure('2') do |config|
         machine2.vm.network "private_network", ip: "192.168.10.50"
         machine2.vm.provision "shell", inline: $useraddscript
         machine2.vm.provision :shell, path: "bootstrap.sh"
-
         machine2.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
@@ -44,7 +42,6 @@ Vagrant.configure('2') do |config|
         machine3.vm.host_name = "HAproxy.local"
         machine3.vm.network "private_network", ip: "192.168.10.60"
         machine3.vm.provision "shell", inline: $useraddscript
-
         machine3.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
