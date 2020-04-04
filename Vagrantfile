@@ -10,8 +10,7 @@ SCRIPT
 
 
 Vagrant.configure('2') do |config|
-    config.ssh.insert_key = false
-
+    
     # set default settings
     config.vm.box = "ubuntu/bionic64"
     config.vm.provider "virtualbox" do |vb|
@@ -28,8 +27,6 @@ Vagrant.configure('2') do |config|
         machine1.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
-
-        machine1.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
     end
 
     config.vm.define "web02", primary: false do |machine2|
@@ -41,8 +38,6 @@ Vagrant.configure('2') do |config|
         machine2.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
-        
-        machine2.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
     end
 
     config.vm.define "HAproxy", primary: false do |machine3|
@@ -55,7 +50,6 @@ Vagrant.configure('2') do |config|
         end
         
         machine3.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
-        machine3.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
     end
 
 end
