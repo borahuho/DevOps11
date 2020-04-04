@@ -6,9 +6,10 @@ HAproxy
 
 ######################################
 
-1. Stop and disable apache service on HAproxy 
+1. Login to the HAproxy server.
 
-2. Open webbrowser and go to 192.168.10.40 and 192.168.10.50 (You must see the same webpage)
+2. Open webbrowser and go to 192.168.10.40 and 192.168.10.50 (You must see the same webpage).
+2.1 Check 192.168.10.60 there is not a webpage.
 
 3. Install haproxy on the HAproxy server.
 
