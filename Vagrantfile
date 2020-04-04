@@ -45,8 +45,6 @@ Vagrant.configure('2') do |config|
         machine3.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
-        
         machine3.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
     end
-
 end
