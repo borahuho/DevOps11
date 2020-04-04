@@ -29,7 +29,6 @@ Vagrant.configure('2') do |config|
             vb.cpus = 1
         end
 
-        machine1.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
         machine1.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
     end
 
@@ -43,7 +42,6 @@ Vagrant.configure('2') do |config|
             vb.cpus = 1
         end
         
-        machine2.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
         machine2.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "$HOME/.ssh/id_rsa"
     end
 
