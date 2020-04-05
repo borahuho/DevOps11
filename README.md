@@ -22,6 +22,11 @@ Software needed:
 Youtube: https://youtu.be/KABnIuaA8SM
 ```
 
+## Demo HAproxy
+```
+Youtube: https://youtu.be/YLlT9LXN5HQ
+```
+
 ## Installation
 ```
 Install Virtualbox: https://www.virtualbox.org/wiki/Downloads
