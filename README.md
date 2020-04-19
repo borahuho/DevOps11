@@ -27,11 +27,11 @@ Youtube: https://youtu.be/YLlT9LXN5HQ
 
 
 ## Installation
-```
-Install Virtualbox: https://www.virtualbox.org/wiki/Downloads
-Install Git bash for Windows: https://gitforwindows.org/
-Install Vagrant for Windows: https://www.vagrantup.com/downloads.html
-```
+
+* Install Virtualbox: https://www.virtualbox.org/wiki/Downloads
+* Install Git bash for Windows: https://gitforwindows.org/
+* Install Vagrant for Windows: https://www.vagrantup.com/downloads.html
+
 ## Run this Vagrant VM
 Open **Git Bash** in Windows
 ```
