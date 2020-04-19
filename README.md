@@ -1,10 +1,10 @@
 # DevOps16
-```
+
 With this vagrant, you will install 3 Ubuntu 18.04 machines, 2x apache webserver and 1 ubuntu server for HAproxy.
 It will add some default users, groups and directory's. By default 2 webservers with small content.
 This Vagrant is to practice with HAproxy.
 This repository is intended for educational purpose only.
-```
+
 
 ## Prerequisites
 
