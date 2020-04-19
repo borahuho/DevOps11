@@ -7,14 +7,14 @@ This repository is intended for educational purpose only.
 ```
 
 ## Prerequisites
-```
+
 Works on Windows 10 and tested on macOS (macOS needs the Virtualbox extension pack).
 
 Software needed:
 * Virtualbox 5.0 or higher
 * Git bash for Windows
 * Vagrant 2.2.6 or higher
-```
+
 
 ## Demo installation && use Vagrant
 
