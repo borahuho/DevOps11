@@ -1,4 +1,4 @@
-# DevOps16
+# DevOps11
 
 This vagrant will install 3 Ubuntu 18.04 machines, 2x apache webserver and 1 ubuntu server for HAproxy.
 It will add some default users, groups and directory's. By default 2 webservers with small content.
@@ -37,8 +37,8 @@ Open **Git Bash** in Windows
 ```
 cd Documents
 mkdir vagrant && cd vagrant
-git clone https://github.com/borahuho/DevOps16
-cd DevOps16
+git clone https://github.com/borahuho/DevOps11
+cd DevOps11
 vagrant up
 vagrant ssh HAproxy
 ```
