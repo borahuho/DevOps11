@@ -1,4 +1,3 @@
-
 $useraddscript = <<SCRIPT
 useradd -m henk
 groupadd operators
@@ -18,33 +17,35 @@ Vagrant.configure('2') do |config|
         vb.cpus = 1
     end
 
-    config.vm.define "web01", primary: true do |machine1|
-        machine1.vm.host_name = "web01.local"
-        machine1.vm.network "private_network", ip: "192.168.10.40"
+    config.vm.define "ansible", primary: true do |machine1|
+        machine1.vm.host_name = "ansible.local"
+        machine1.vm.network "private_network", ip: "192.168.10.180"
         machine1.vm.provision "shell", inline: $useraddscript
         machine1.vm.provision :shell, path: "bootstrap.sh"
+		machine1.vm.provision :shell, :inline => "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config; sudo systemctl restart sshd;", run: "always"
         machine1.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
+        machine1.vm.synced_folder "DevOps15/", "/home/vagrant/mission"
     end
 
-    config.vm.define "web02", primary: false do |machine2|
-        machine2.vm.host_name = "web02.local"
-        machine2.vm.network "private_network", ip: "192.168.10.50"
+    config.vm.define "linux1", primary: false do |machine2|
+        machine2.vm.host_name = "linux1.local"
+        machine2.vm.network "private_network", ip: "192.168.10.185"
         machine2.vm.provision "shell", inline: $useraddscript
-        machine2.vm.provision :shell, path: "bootstrap.sh"
+		machine2.vm.provision :shell, :inline => "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config; sudo systemctl restart sshd;", run: "always"
         machine2.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
     end
 
-    config.vm.define "HAproxy", primary: false do |machine3|
-        machine3.vm.host_name = "HAproxy.local"
-        machine3.vm.network "private_network", ip: "192.168.10.60"
+    config.vm.define "linux2", primary: false do |machine3|
+        machine3.vm.host_name = "linux2.local"
+        machine3.vm.network "private_network", ip: "192.168.10.186"
         machine3.vm.provision "shell", inline: $useraddscript
+		machine3.vm.provision :shell, :inline => "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config; sudo systemctl restart sshd;", run: "always"
         machine3.vm.provider "virtualbox" do |vb|
             vb.cpus = 1
         end
-        machine3.vm.synced_folder "DevOps16/", "/home/vagrant/mission"
     end
 end
