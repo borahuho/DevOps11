@@ -1,8 +1,8 @@
-# DevOps16
+# DevOps11
 
-This vagrant will install 3 Linux Ubuntu machines, 2x Linux servers and 1 ubuntu server with Ansible.
-It will add some default users, groups and directory's.
-This Vagrant is to practice with Ansible and Linux, Windows server and Cisco Routers in 1 test enviroment.
+This vagrant will install 3 Ubuntu 18.04 machines, 2x apache webserver and 1 ubuntu server for HAproxy.
+It will add some default users, groups and directory's. By default 2 webservers with small content.
+This Vagrant is to practice with HAproxy.
 This repository is intended for educational purpose only.
 
 
@@ -14,12 +14,16 @@ Software needed:
 * Virtualbox 5.0 or higher
 * Git bash for Windows
 * Vagrant 2.2.6 or higher
-* Virtual machine with Windows server 
 
 
 ## Demo installation && use Vagrant
 
 Youtube: https://youtu.be/KABnIuaA8SM
+
+
+## Demo HAproxy
+
+Youtube: https://youtu.be/YLlT9LXN5HQ
 
 
 ## Installation
@@ -33,26 +37,26 @@ Open **Git Bash** in Windows
 ```
 cd Documents
 mkdir vagrant && cd vagrant
-git clone https://github.com/borahuho/DevOps16
-cd DevOps16
+git clone https://github.com/borahuho/DevOps11
+cd DevOps11
 vagrant up
-vagrant ssh ansible
+vagrant ssh HAproxy
 ```
 ## Mission
 
-Read your mission in ~/vagrant/mission (on Ansible server)
+Read your mission in ~/vagrant/mission (on HAproxy server)
 
 ## Network
 Vagrant VM will be set up with 2 network adapters
 ```
 Nat : DHCP
-Localhost (ansible): 192.168.10.180
+Localhost (web1): 192.168.10.40
 
 Nat : DHCP
-Localhost (linux1): 192.168.10.185
+Localhost (web2): 192.168.10.50
 
 Nat : DHCP
-Localhost (linux2): 192.168.10.186
+Localhost (HAproxy): 192.168.10.60
 ```
 ## Vagrant commands
 Start VM's with Vagrant
@@ -69,8 +73,8 @@ vagrant destroy
 ```
 ssh in to the VM
 ```
-vagrant ssh ansible
-vagrant ssh linux1
-vagrant ssh linux2
+vagrant ssh web01
+vagrant ssh web02
+vagrant ssh HAproxy
 ```
 

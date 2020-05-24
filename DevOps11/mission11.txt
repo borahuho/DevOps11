@@ -1,0 +1,66 @@
+
+
+
+
+HAproxy
+
+######################################
+
+Install and configure HAproxy on the proxyserver. You can use the steps below. Config file for HAproxy is added in this directory.
+
+1. Login to the HAproxy server.
+
+2. Open webbrowser and go to 192.168.10.40 and 192.168.10.50 (You must see the same webpage).
+2.1 Check 192.168.10.60 there is not a webpage.
+2.2 You can use curl
+
+3. Install haproxy on the HAproxy server.
+
+4. Check the version of haproxy
+
+5. Make a copy of the default haproxy file.
+
+6. Start and enable the service haproxy.
+
+7. Go to the /etc/rsyslog.conf and uncomment the below parameters.
+7.1 ModLoad imudp
+7.2 UDPServerRun 514
+7.3 UDPServerAddress 127.0.0.1
+7.4 ModLoad imtcp
+7.5 InputTCPServerRun 514
+
+8. Restart the service and create a haproxy.log file in /var/log/
+8.1 touch /etc/rsyslog.d/ha.conf
+8.2 vi /etc/rsyslog.d/ha.conf
+
+#add line below#
+local2.* /var/log/haproxy.log
+
+9. systemctl restart rsyslog
+9.1 systemctl restart haproxy
+9.2 check /var/log/ for haproxy log
+
+10. Now you must create a separate file for haproxy web server in /etc/haproxy
+10.1 touch /etc/haproxy/ha_web.cfg 
+10.2 vim ha_web.cfg
+
+11. Verify the configuration settings before restarting the haproxy service.
+11.1 haproxy -c -f /etc/haproxy/haproxy.cfg
+
+12. Now configure the haproxy for a webserver.
+12.1 vim haproxy.cfg
+12.2 check config befor restart : haproxy -c -f /etc/haproxy/haproxy.cfg
+12.3 restart haproxy 
+
+13. We will hit the load balancer IP and HAproxy will use balancing with round-robin. 
+13.1 curl 192.168.10.60
+
+Output should be the same. In a normal envirement we can change the index.html, but with Vagrant this is the sam file.
+
+When all steps are done, this HAproxy server is ready for deployment. 
+
+######################################
+
+write a configuration manual for HAproxy server.
+
+
